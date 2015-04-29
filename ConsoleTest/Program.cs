@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TSLib.Net;
+using TSLib.Text;
 
 namespace ConsoleTest
 {
@@ -11,9 +12,13 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
             Console.Title = "TSLib 测试";
-            if (TSLib.Consoles.Passwd.VerifyPasswd("123456", "budui", 3) == false)
-                Console.WriteLine("sb");
-            Console.WriteLine(TSLib.Text.Pinyin.GetPinyin("哈哈"));
+
+            string s = "我是四季天书";
+            Console.WriteLine(s);
+            string ss = Pinyin.GetPinyin(s);
+            Console.WriteLine(ss);
+            Console.WriteLine(TSLib.Text.Pinyin.ToZhuyin(ss));
+
             Console.ReadKey();
         }
     }

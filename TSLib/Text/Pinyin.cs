@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.International.Converters.PinYinConverter;
+using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace TSLib.Text
 {
@@ -30,6 +32,30 @@ namespace TSLib.Text
                 }
             }
             return r;
+        }
+
+        public static string ToZhuyin(string str)
+        {
+            str = str.ToLower();
+            string[] strs = StringToArray(str, " ");
+            string r = "";
+            XElement root = XElement.Load(@"Text\PinyinTable.xml");
+            foreach (string s in strs)
+            {
+                var query =
+                    from el in root.Elements("Main")
+                    where (string)el.Element("Pinyin") == s
+                    select el;
+                foreach (XElement el in query)
+                    r += (string)el.Element("Zhuyin") + " ";
+            }
+            return r;
+        }
+
+        public static string[] StringToArray(string str, string splitChar)
+        {
+            if (str == null) return null;
+            return Regex.Split(str, splitChar, RegexOptions.IgnoreCase).Where<string>(i => i != "").ToArray();
         }
     }
 }
