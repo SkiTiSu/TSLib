@@ -15,6 +15,22 @@ namespace TSLib.Text
 {
     public class Pinyin
     {
+        public enum Pinyins
+        {
+            Zhuyin,
+            Weituoma,
+            Zhuyin2,
+            Yelu,
+            FaguoYuandong,
+            Deguo,
+            HuayuTongyong,
+            Pinyin,
+            LuomaYin,
+            LuomaYang,
+            LuomaShang,
+            LuomaQu
+        }
+
         public static string GetPinyin(string str)
         {
             string r = string.Empty;
@@ -36,6 +52,11 @@ namespace TSLib.Text
 
         public static string ToZhuyin(string str)
         {
+            return Convert(str, Pinyins.Pinyin, Pinyins.Zhuyin);
+        }
+
+        public static string Convert(string str, Pinyins pfrom, Pinyins pto)
+        {
             str = str.ToLower();
             string[] strs = StringToArray(str, " ");
             string r = "";
@@ -43,11 +64,11 @@ namespace TSLib.Text
             foreach (string s in strs)
             {
                 var query =
-                    from el in root.Elements("Main")
-                    where (string)el.Element("Pinyin") == s
+                    from el in root.Elements("aPinyin")
+                    where (string)el.Element(pfrom.ToString()) == s
                     select el;
                 foreach (XElement el in query)
-                    r += (string)el.Element("Zhuyin") + " ";
+                    r += (string)el.Element(pto.ToString()) + " ";
             }
             return r;
         }

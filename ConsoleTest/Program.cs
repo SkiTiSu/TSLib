@@ -13,11 +13,15 @@ namespace ConsoleTest
         {
             Console.Title = "TSLib 测试";
 
-            string s = "我是四季天书";
-            Console.WriteLine(s);
-            string ss = Pinyin.GetPinyin(s);
-            Console.WriteLine(ss);
-            Console.WriteLine(TSLib.Text.Pinyin.ToZhuyin(ss));
+            while (true)
+            {
+                Console.Write("输入简体中文>");
+                string s = Console.ReadLine();
+                //Console.WriteLine(s);
+                string ss = Pinyin.GetPinyin(s);
+                Console.WriteLine(ss);
+                Console.WriteLine(TSLib.Text.Pinyin.ToZhuyin(ss));
+            }
 
             Console.ReadKey();
         }
