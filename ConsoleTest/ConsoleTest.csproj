@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TSLib.Text\TSLib.Text.csproj">
+      <Project>{b5f08fc3-64f7-4d3a-8a1b-0dceb4ed37bd}</Project>
+      <Name>TSLib.Text</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TSLib\TSLib.csproj">
       <Project>{26a3be99-8f8a-41d8-86a7-3bcfea6340b9}</Project>
       <Name>TSLib</Name>

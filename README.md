@@ -9,6 +9,7 @@
 * U盘插入、拔出的盘符的事件！（TSLib.Port.UDWatcher）
 * 【失效】获得IP地址、所在地和运营商！（TSLib.Net.PublicIP）
 * 【正在开发】下载文件之类的啦（TSLib.Net.TSDownload）
+* 拼音、注音等所有中文拼音系统的转换（TSLib.Text.Pinyin）
 
 ## 关于版权
 * 对于商用：使“用GNU宽通用公共许可证（LGPL）”。详见：http://www.gnu.org/licenses/lgpl.html
@@ -19,4 +20,4 @@
 * For non-commercial: Using 'TS OMG I still believe open source in China V0.9'. You only have to inform the author and add author's name (SkiTiSu) in the software.
 
 © 2014-2015 四季天书工作室 SkiTiSu Studio<br>
-作者博客：http://blog.sjtsjjy.com
+作者博客：http://blog.SkiTiSu.com
