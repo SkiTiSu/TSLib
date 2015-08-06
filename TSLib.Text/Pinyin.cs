@@ -1,6 +1,7 @@
 ﻿/* 
  * 本类依赖的微软全球化包可以在以下地址获取
  * http://www.microsoft.com/zh-cn/download/details.aspx?id=15251
+ * 感谢Oliver Waon提出修改意见
  * 
  */
 using System;
@@ -60,16 +61,17 @@ namespace TSLib.Text
         public static string Convert(string str, Pinyins pfrom, Pinyins pto)
         {
             Stream sm = Assembly.GetExecutingAssembly().GetManifestResourceStream("TSLib.Text.PinyinTable.xml");
-            str = str.ToLower();
+            str = str.ToLower(); //防止大写导致数据库无对应内容
+            str = str.Replace('v', 'ü'); //v与ü通用，但数据库中只有ü
             string[] strs = StringToArray(str, " ");
             string r = "";
             XElement root = XElement.Load(sm);
             int i = 0;
             foreach (string s in strs)
             {
-                if (s == "\r\n")
+                if (s == "\r\n") //遇到换行，输出string也加上换行
                 {
-                    if (r.Substring(r.Length - 1, 1) != "\n")
+                    if (r != "" && r.Substring(r.Length - 1, 1) != "\n") //过滤第一行为空，&&后面是干啥来着的。。。
                         r = r.Substring(0, r.Length - 1);
                     r += "\r\n";
                 }

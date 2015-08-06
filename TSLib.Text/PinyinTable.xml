@@ -3,7 +3,8 @@
 欢迎使用由四季天书整理的中文拼音对照表xml版
 本对照表来自维基百科，使用CC BY-SA 3.0协议授权
 原地址：http://zh.wikipedia.org/wiki/%E4%B8%AD%E6%96%87%E6%8B%BC%E9%9F%B3%E5%B0%8D%E7%85%A7%E8%A1%A8
-整理者博客：blog.SkiTiSu.com
+整理者博客：blog.skitisu.com
+感谢Oliver Waon根据 http://www.edu.tw/files/site_content/M0001/juyin/index.htm 提出修改意见
 -->
 <dataroot xmlns:od="urn:schemas-microsoft-com:officedata" generated="2015-05-07T21:17:50">
 <aPinyin>
@@ -5759,5 +5760,47 @@
 <LuomaYang>yun</LuomaYang>
 <LuomaShang>yeun</LuomaShang>
 <LuomaQu>yunn</LuomaQu>
+</aPinyin>
+<aPinyin>
+<Zhuyin>ㄝ</Zhuyin>
+<Weituoma></Weituoma>
+<Zhuyin2></Zhuyin2>
+<Yelu></Yelu>
+<FaguoYuandong></FaguoYuandong>
+<Deguo></Deguo>
+<HuayuTongyong></HuayuTongyong>
+<Pinyin>ê</Pinyin>
+<LuomaYin></LuomaYin>
+<LuomaYang></LuomaYang>
+<LuomaShang></LuomaShang>
+<LuomaQu></LuomaQu>
+</aPinyin>
+<aPinyin>
+<Zhuyin>ㄧㄛ</Zhuyin>
+<Weituoma></Weituoma>
+<Zhuyin2></Zhuyin2>
+<Yelu></Yelu>
+<FaguoYuandong></FaguoYuandong>
+<Deguo></Deguo>
+<HuayuTongyong></HuayuTongyong>
+<Pinyin>yo</Pinyin>
+<LuomaYin></LuomaYin>
+<LuomaYang></LuomaYang>
+<LuomaShang></LuomaShang>
+<LuomaQu></LuomaQu>
+</aPinyin>
+<aPinyin>
+<Zhuyin>ㄧㄞ</Zhuyin>
+<Weituoma></Weituoma>
+<Zhuyin2></Zhuyin2>
+<Yelu></Yelu>
+<FaguoYuandong></FaguoYuandong>
+<Deguo></Deguo>
+<HuayuTongyong></HuayuTongyong>
+<Pinyin>yai</Pinyin>
+<LuomaYin></LuomaYin>
+<LuomaYang></LuomaYang>
+<LuomaShang></LuomaShang>
+<LuomaQu></LuomaQu>
 </aPinyin>
 </dataroot>
