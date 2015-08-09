@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TSLib.Net;
 using TSLib.Text;
+using TSLib.Photogrammetry;
 
 namespace ConsoleTest
 {
@@ -13,15 +14,8 @@ namespace ConsoleTest
         {
             Console.Title = "TSLib 测试";
 
-            while (true)
-            {
-                Console.Write("输入简体中文>");
-                string s = Console.ReadLine();
-                //Console.WriteLine(s);
-                string ss = Pinyin.GetPinyin(s);
-                Console.WriteLine(ss);
-                Console.WriteLine(TSLib.Text.Pinyin.ToZhuyin(ss));
-            }
+            Camera c = new Camera(Camera.ImageSensorTyprEnum.Full, 50, "HaHa");
+            Console.WriteLine(c.GetFOV());
 
             Console.ReadKey();
         }
