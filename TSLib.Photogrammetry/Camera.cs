@@ -10,6 +10,12 @@ namespace TSLib.Photogrammetry
     /// </summary>
     public class Camera
     {
+        /// <summary>
+        /// 新建一个相机
+        /// </summary>
+        /// <param name="sensorEnum">传感器类型</param>
+        /// <param name="f">焦距</param>
+        /// <param name="name">相机名称</param>
         public Camera(ImageSensorTyprEnum sensorEnum, int f, string name = "Default")
         {
             Name = name;
@@ -17,6 +23,13 @@ namespace TSLib.Photogrammetry
             Focal = f;
         }
 
+        /// <summary>
+        /// 新建一个相机
+        /// </summary>
+        /// <param name="length">传感器长度</param>
+        /// <param name="width">传感器宽度</param>
+        /// <param name="f">焦距</param>
+        /// <param name="name">相机名称</param>
         public Camera(int length, int width, int f, string name = "Default")
         {
             Name = name;
@@ -27,8 +40,8 @@ namespace TSLib.Photogrammetry
         public string Name { set; get; }
         public ImageSensor Sensor { set; get; }
         public int Focal { get; set; }
-        
-        //TODO:重整逻辑，只获取长度和宽度，另外对角线长度
+        public int Pixels { get; set; }
+
 
         /// <summary>
         /// 获取图像传感器对角线长度
@@ -69,7 +82,7 @@ namespace TSLib.Photogrammetry
 
         public double GetFOV()
         {
-            return (2 * Math.Atan(Sensor.Diagonal / (2 * Focal))) * 180 / Math.PI;
+            return (2 * Math.Atan(Sensor.Length / (2 * Focal))) * 180 / Math.PI;
         }
 
         /// <summary>
@@ -101,7 +114,7 @@ namespace TSLib.Photogrammetry
             /// APS-C画幅
             /// </summary>
             APSC,
-            M4d3,
+            //TODO: 增加画幅M4d3,
             /// <summary>
             /// 其它（注意，默认获取数值为全画幅）
             /// </summary>
