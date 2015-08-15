@@ -1,6 +1,8 @@
 ﻿/* 
  * 本类依赖的微软全球化包可以在以下地址获取
  * http://www.microsoft.com/zh-cn/download/details.aspx?id=15251
+ * 为保证编译通过，依赖以上包的部分已被注释
+ *
  * 感谢Oliver Waon提出修改意见
  * 
  */
@@ -8,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.International.Converters.PinYinConverter;
+//using Microsoft.International.Converters.PinYinConverter;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using System.IO;
@@ -34,6 +36,7 @@ namespace TSLib.Text
             LuomaQu
         }
 
+        /*
         public static string GetPinyin(string str)
         {
             string r = string.Empty;
@@ -52,6 +55,7 @@ namespace TSLib.Text
             }
             return r;
         }
+        */
 
         public static string ToZhuyin(string str)
         {

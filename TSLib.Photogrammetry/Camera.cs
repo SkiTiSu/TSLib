@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TSLib.Photogrammetry
+namespace TSLib.Photo
 {
     /// <summary>
     /// 摄影测量-相机相关的计算

@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using TSLib.Net;
 using System.Web;
-using System.Web.Extensions;
+//using System.Web.Extensions;
 using System.Web.Script.Serialization;
 using System.Net;
 using System.IO;
