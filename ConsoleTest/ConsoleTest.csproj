@@ -49,9 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TSLib.Photogrammetry\TSLib.Photogrammetry.csproj">
+    <ProjectReference Include="..\TSLib.Photogrammetry\TSLib.Photo.csproj">
       <Project>{32154846-3283-4691-870a-d2f9c337918f}</Project>
-      <Name>TSLib.Photogrammetry</Name>
+      <Name>TSLib.Photo</Name>
     </ProjectReference>
     <ProjectReference Include="..\TSLib.Text\TSLib.Text.csproj">
       <Project>{b5f08fc3-64f7-4d3a-8a1b-0dceb4ed37bd}</Project>
