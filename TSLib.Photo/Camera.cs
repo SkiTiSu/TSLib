@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TSLib.Photo.EXIF;
 
 namespace TSLib.Photo
 {
@@ -35,6 +36,12 @@ namespace TSLib.Photo
             Name = name;
             Sensor = new ImageSensor(length, width);
             Focal = f;
+        }
+
+        public Camera(string url)
+        {
+            EXIFextractor er2 = new EXIFextractor(url, "", "");
+
         }
 
         public string Name { set; get; }
@@ -135,6 +142,7 @@ namespace TSLib.Photo
             {
                 Length = length;
                 Width = width;
+                imageSensorType = ImageSensorTyprEnum.Other;
             }
 
             public ImageSensorTyprEnum ImageSensorType
@@ -160,8 +168,6 @@ namespace TSLib.Photo
                             Width = 15.8;
                             break;
                         default:
-                            Length = 36;
-                            Width = 24;
                             break;
                     }
                     imageSensorType = value;
