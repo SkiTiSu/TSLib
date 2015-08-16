@@ -7,8 +7,8 @@
     <ProjectGuid>{32154846-3283-4691-870A-D2F9C337918F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TSLib.Photogrammetry</RootNamespace>
-    <AssemblyName>TSLib.Photogrammetry</AssemblyName>
+    <RootNamespace>TSLib.Photo</RootNamespace>
+    <AssemblyName>TSLib.Photo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,8 +42,12 @@
   <ItemGroup>
     <Compile Include="AerialSurvey.cs" />
     <Compile Include="Camera.cs" />
-    <Compile Include="EXIF.cs" />
+    <Compile Include="EXIF\EXIFextractor.cs" />
+    <Compile Include="EXIF\EXIFtranslation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EXIF\decoy.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

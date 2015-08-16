@@ -5,6 +5,7 @@ using System.Text;
 using TSLib.Net;
 using TSLib.Text;
 using TSLib.Photo;
+using System.IO;
 
 namespace ConsoleTest
 {
@@ -32,7 +33,7 @@ namespace ConsoleTest
 
         static void exiftest()
         {
-            Encoding ascii = Encoding.ASCII;
+            //Encoding ascii = Encoding.ASCII;
 
             //			System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(
             //				"F:\\webdev\\raw.images.pk\\saripaya\\lonely Tree - Paey.jpg"
@@ -51,13 +52,15 @@ namespace ConsoleTest
             //			if (er["Copyright"] == null)
             //				er.setTag(0x8298, "http://www.beautifulpakistan.com");
 
-            EXIF.EXIFextractor er2 = new EXIF.EXIFextractor(@"D:\DSC07501.JPG", "", "");
+            TSLib.Photo.EXIF.EXIFextractor er2 = new TSLib.Photo.EXIF.EXIFextractor(@"D:\t1.JPG", "", "");
 
-            foreach (KeyValuePair<string,string> s in er2)
+            foreach (KeyValuePair<string, string> s in er2)
             {
                 Console.WriteLine(s.Key + " : " + s.Value);
             }
             Console.WriteLine(er2["User Comment"]);
+
+
         }
     }
 }

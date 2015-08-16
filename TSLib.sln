@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSLib.Text", "TSLib.Text\TSLib.Text.csproj", "{B5F08FC3-64F7-4D3A-8A1B-0DCEB4ED37BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSLib.Photo", "TSLib.Photogrammetry\TSLib.Photo.csproj", "{32154846-3283-4691-870A-D2F9C337918F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSLib.Photo", "TSLib.Photo\TSLib.Photo.csproj", "{32154846-3283-4691-870A-D2F9C337918F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
