@@ -37,7 +37,7 @@ namespace TSLib.Port
         /// <summary>
         /// U盘已经可以使用
         /// </summary>
-        public event DeviceEventHandler DeviceArrial;
+        public event DeviceEventHandler DeviceArrival;
         /// <summary>
         /// U盘已经弹出
         /// </summary>
@@ -92,7 +92,7 @@ namespace TSLib.Port
                                     DEV_BROADCAST_VOLUME vol;
                                     vol = (DEV_BROADCAST_VOLUME)Marshal.PtrToStructure(m.LParam, typeof(DEV_BROADCAST_VOLUME));
                                     ID = vol.dbcv_unitmask.ToString("x");
-                                    DeviceArrial(IO(ID));
+                                    DeviceArrival(IO(ID));
                                     break;
                                 }
                             }
