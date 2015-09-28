@@ -211,6 +211,9 @@ namespace TSLib.Photo.EXIF
             Add(0xA300, "FileSource");
             Add(0xA301, "SceneType");
             Add(0xA302, "CfaPattern");
+            //
+            Add(0xA405, "FocalLengthIn35mmFilm");
+            //
             //GPS Info Tags
             Add(0x0, "GPSVersionID");
             Add(0x1, "GPSLatitudeRef");

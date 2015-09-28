@@ -52,7 +52,7 @@ namespace ConsoleTest
             //			if (er["Copyright"] == null)
             //				er.setTag(0x8298, "http://www.beautifulpakistan.com");
 
-            TSLib.Photo.EXIF.EXIFextractor er2 = new TSLib.Photo.EXIF.EXIFextractor(@"D:\t1.JPG", "", "");
+            TSLib.Photo.EXIF.EXIFextractor er2 = new TSLib.Photo.EXIF.EXIFextractor(@"D:\t2.JPG", "", "");
 
             foreach (KeyValuePair<string, string> s in er2)
             {

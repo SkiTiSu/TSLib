@@ -17,7 +17,6 @@
  */
 
 //TODO:继续修改，还有本地化哦。。。T T
-//TODO:将转换器和翻译器分开文件，EXIF namespace
 
 using System;
 using System.Collections;
@@ -172,6 +171,10 @@ namespace TSLib.Photo.EXIF
             //
             foreach (System.Drawing.Imaging.PropertyItem p in parr)
             {
+                if (p.Id == 0x6)
+                {
+
+                }
                 string v = "";
                 string name = (string)myHash[p.Id];
                 // tag not found. skip it
@@ -301,6 +304,34 @@ namespace TSLib.Photo.EXIF
                     //
                     switch (p.Id)
                     {
+                        case 0x0002: //修改/无法正确读取经纬度和高度的问题
+                            if (p.Value.Length == 24)
+                            {
+                                //degrees(将byte[0]~byte[3]转成uint, 除以byte[4]~byte[7]转成的uint) 
+                                double dd = BitConverter.ToUInt32(p.Value, 0) * 1.0d / BitConverter.ToUInt32(p.Value, 4);
+                                //minutes(将byte[8]~byte[11]转成uint, 除以byte[12]~byte[15]转成的uint) 
+                                double m = BitConverter.ToUInt32(p.Value, 8) * 1.0d / BitConverter.ToUInt32(p.Value, 12);
+                                //seconds(将byte[16]~byte[19]转成uint, 除以byte[20]~byte[23]转成的uint) 
+                                double s = BitConverter.ToUInt32(p.Value, 16) * 1.0d / BitConverter.ToUInt32(p.Value, 20);
+                                //计算经纬度数值, 如果是南纬, 要乘上(-1) 
+                                v = string.Format("{0:#}°{1:#}'{2:#.00}\"", dd, m, s);
+                            }
+                            break;
+                        case 0x0004:
+                            if (p.Value.Length == 24)
+                            {
+                                //degrees(将byte[0]~byte[3]转成uint, 除以byte[4]~byte[7]转成的uint) 
+                                double dd = BitConverter.ToUInt32(p.Value, 0) * 1.0d / BitConverter.ToUInt32(p.Value, 4);
+                                //minutes(将byte[8]~byte[11]转成uint, 除以byte[12]~byte[15]转成的uint) 
+                                double m = BitConverter.ToUInt32(p.Value, 8) * 1.0d / BitConverter.ToUInt32(p.Value, 12);
+                                //seconds(将byte[16]~byte[19]转成uint, 除以byte[20]~byte[23]转成的uint) 
+                                double s = BitConverter.ToUInt32(p.Value, 16) * 1.0d / BitConverter.ToUInt32(p.Value, 20);
+                                v = string.Format("{0:#}°{1:#}'{2:#.00}\"", dd, m, s);
+                            }
+                            break;
+                        case 0x0006:
+                            v = r.ToDouble().ToString();
+                            break;
                         case 0x9202: // aperture
                             v = "F/" + Math.Round(Math.Pow(Math.Sqrt(2), r.ToDouble()), 2).ToString();
                             break;
