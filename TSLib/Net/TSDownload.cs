@@ -75,6 +75,11 @@ namespace TSLib.Net
             tdl.Start();
         }
 
+        public void StartWithoutThread()
+        {
+            ThreadDL();
+        }
+
         void tims_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             Speed = DownloadedBytes - lastDownloadedBytes;
@@ -119,9 +124,48 @@ namespace TSLib.Net
             HttpWebRequest Myrq = (HttpWebRequest)HttpWebRequest.Create(URL);
             Myrq.Timeout = 5000;
             HttpWebResponse myrp = (HttpWebResponse)Myrq.GetResponse();
+
+            //检测是否有重名，有则加入(1)，如仍重复加(2)，以此类推
+            if (File.Exists(FileName))
+            {
+                string fn1 = FileName.Substring(0, FileName.LastIndexOf('.'));
+                string fn2 = FileName.Substring(FileName.LastIndexOf('.'));
+                int i = 0;
+                string nFileName;
+                do
+                {
+                    i++;
+                    nFileName = string.Format("{0}({1}){2}", fn1, i, fn2);
+                } while (File.Exists(nFileName));
+                FileName = nFileName;
+            }
+
+            //失败后重试
+            int retry = 0;
+            while (myrp == null)
+            {
+                try
+                {
+                    myrp = (HttpWebResponse)Myrq.GetResponse();
+                }
+                catch
+                {
+                    //失败，重试
+                    retry++;
+                    Thread.Sleep(3000);
+                }
+                if (retry == 3) //TODO: 重试次数可改
+                {
+                    //下载失败
+                    Myrq.Abort();
+                    Percent = 100;
+                    return;
+                }
+            }
             TotalBytes = myrp.ContentLength;
-            SetPbM((int)TotalBytes>>4);
+            SetPbM((int)TotalBytes >> 4);
             Stream st = myrp.GetResponseStream();
+            st.ReadTimeout = 3000;
 
             //检测是否有重名，有则加入(1)，如仍重复加(2)，以此类推
             if (File.Exists(FileName))
@@ -146,7 +190,20 @@ namespace TSLib.Net
                 DownloadedBytes = osize + DownloadedBytes;
                 so.Write(by, 0, osize);
                 SetPbV((int)DownloadedBytes>>4);
-                osize = st.Read(by, 0, (int)by.Length);
+                try
+                {
+                    osize = st.Read(by, 0, (int)by.Length);
+                    //TODO: 加入重试
+                }
+                catch
+                {
+                    //下载失败
+                    so.Close();
+                    st.Close();
+                    Myrq.Abort();
+                    Percent = 100;
+                    return;
+                }
                 Percent = (float)DownloadedBytes / (float)TotalBytes * 100;
             }
             so.Close();
