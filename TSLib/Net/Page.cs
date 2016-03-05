@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net;
+using System.IO;
+using System.IO.Compression;
 
 namespace TSLib.Net
 {
@@ -21,13 +23,31 @@ namespace TSLib.Net
         {
             try
             {
-                WebClient myWebClient = new WebClient();
-                byte[] myDataBuffer = myWebClient.DownloadData(url);
+                WebClient htmlWebClient = new WebClient();
+                //htmlWebClient.Headers.Add("Cookie", cookie);
+                byte[] myDataBuffer = htmlWebClient.DownloadData(url);
+
+                string sContentEncoding = htmlWebClient.ResponseHeaders["Content-Encoding"];
+                if (sContentEncoding == "gzip") //如果是gzip压缩过的网页，需先进行解压操作
+                {
+                    MemoryStream ms = new MemoryStream(myDataBuffer);
+                    MemoryStream msTemp = new MemoryStream();
+                    int count = 0;
+                    GZipStream gzip = new GZipStream(ms, CompressionMode.Decompress);
+                    byte[] buf = new byte[1000];
+                    while ((count = gzip.Read(buf, 0, buf.Length)) > 0)
+                    {
+                        msTemp.Write(buf, 0, count);
+                    }
+                    myDataBuffer = msTemp.ToArray();
+                }
+
                 return Encoding.UTF8.GetString(myDataBuffer);
             }
             catch
             {
                 return "网络错误！";
+                //throw new Exception("获取失败");
             }
         }
 
